@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Whisper&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	overflow: hidden;
+	background: #fff;
+}
+
+/*
+16 - 요소의 내용이 자신의 경계를 벗어날 때 어떻게 처리할지를 지정하는 속성. 보통 박스 모델에서 사용되며, 다음과 같은 기능을 수행.
+내용을 자르기: 만약 요소의 내용이 해당 요소의 크기를 벗어나면, 자신의 경계를 벗어나는 내용을 잘라냄. 이는 내용을 화면에 표시하지 않고 숨기는 효과.
+스크롤 막기: 만약 요소의 내용이 스크롤바를 생성하려고 하지만, 스크롤바를 표시하지 않고 스크롤을 막음. 이는 요소의 내용에 접근할 수 없도록 함.
+*/
+
+ul {
+	position: relative;
+}
+
+ul li {
+	list-style: none;
+	text-align: center;
+}
+
+ul li a {
+	color: #333;
+	text-decoration: none;
+	font-size: 2em;
+	padding: 5px 20px;
+	display: inline-flex;
+	font-weight: 300;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+/*
+37 - 텍스트의 밑줄이나 줄을 제거하는 데 사용. 링크 요소(<a>)의 경우, 기본적으로 하이퍼링크에 밑줄이 표시되지만, text-decoration: none;을 사용하여 이를 제거
+42 - 글자 사이의 간격을 지정
+*/
+
+ul li:hover a {
+	background: #000;
+	color: var(--clr);
+	font-weight: 500;
+}
+
+ul:hover > li:not(:hover) {
+	opacity: 0;
+}
+
+ul li a::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 40%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 5em;
+	opacity: 0;
+	color: #222;
+	z-index: -1;
+	font-weight: 400;
+	text-transform: initial;
+	letter-spacing: 500px;
+	transition: letter-spacing 0.5s;
+	font-family: "Whisper", cursive;
+}
+
+ul li a:hover::before {
+	content: attr(data-text);
+	opacity: 1;
+	left: 50%;
+	background: var(--clr);
+	width: 250vh;
+	height: 250vh;
+	letter-spacing: 0;
+}
