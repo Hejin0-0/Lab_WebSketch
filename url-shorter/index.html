@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>URL 단축기</title>
+</head>
+<body>
+    <div class="container">
+        <i class="bx bx-link-alt icon"></i>
+        <h1 class="title">URL 단축기</h1>
+        
+        <!-- 폼 태그 추가로 접근성 개선 -->
+        <form id="urlForm" class="url-form">
+            <div class="form-group">
+                <label for="originalUrl" class="label">단축할 URL을 입력하세요</label>
+                <input 
+                    type="url" 
+                    id="originalUrl" 
+                    class="input" 
+                    placeholder="https://example.com"
+                    required
+                    autocomplete="url"
+                >
+            </div>
+            
+            <div class="button-group">
+                <button type="button" id="resetBtn" class="btn btn-secondary">
+                    <i class="bx bx-refresh"></i> 초기화
+                </button>
+                <button type="submit" id="shortenBtn" class="btn btn-primary">
+                    <i class="bx bx-link"></i> 단축하기
+                </button>
+            </div>
+        </form>
+        
+        <div class="form-group result-container">
+            <label for="shortenedUrl" class="label">단축된 URL</label>
+            <textarea 
+                id="shortenedUrl" 
+                class="textarea" 
+                readonly 
+                placeholder="단축된 URL이 여기에 표시됩니다"
+            ></textarea>
+            <!-- 복사 버튼 추가 -->
+            <button type="button" id="copyBtn" class="copy-btn" style="display: none;">
+                <i class="bx bx-copy"></i> 복사
+            </button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
